@@ -1,15 +1,91 @@
 # Usage Guide
 
-This guide covers various ways to use StrangerPrints.
+This guide covers various ways to use StrangerPrints across different versions.
 
-## CLI Usage
+## GUI Usage (v2.0 - Recommended)
+
+### Starting the Application
+
+Run the graphical interface:
+
+```bash
+python releases/strangerprints-v2.0.py
+```
+
+### Using the GUI
+
+**Step-by-Step Guide:**
+
+1. **Launch the application** - A dark-themed window will appear with "StrangerPrints" header
+
+2. **Enter Target URL**
+   - Type the website URL in the "Target URL" field
+   - Protocol is optional: `github.com` or `https://github.com`
+   - URL is automatically prefixed with `https://` if needed
+
+3. **Select Resolution**
+   - Click the "Resolution" dropdown
+   - Choose from:
+     - **Full HD (1920x1080)**: Standard desktop screenshot
+     - **4K UHD (3840x2160)**: Ultra high definition for detailed captures
+     - **Mobile (375x812)**: iPhone-sized viewport for mobile testing
+     - **Instagram (1080x1080)**: Perfect square for social media
+
+4. **Set Wait Time**
+   - Use the "Wait (s)" spinner to set load time (0-30 seconds)
+   - Recommended: 3-5 seconds for static sites, 5-10 for dynamic content
+
+5. **Capture Screenshot**
+   - Click the **"RENDER SCREENSHOT"** button
+   - Progress bar shows real-time status
+   - Status label updates: "Waking up engine..." → "Navigating..." → "Waiting..." → "Capturing..." → "Complete."
+
+6. **Preview Results**
+   - Thumbnail preview appears automatically below the progress bar
+   - Click **"Open Full View"** to see the screenshot in your default image viewer
+   - Note: Full View can only be opened once per capture
+
+7. **Save Screenshot**
+   - Click **"Save to Disk"**
+   - Choose location and filename in the file dialog
+   - File is saved with PNG optimization
+
+### GUI Features
+
+**Real-Time Status**: The status label at the bottom shows current operation status
+
+**Progress Tracking**: Visual progress bar fills during the wait phase
+
+**Resource Management**: The application automatically frees memory after 2 minutes of inactivity (you'll see "Idle (Resources Freed)" status)
+
+**Engine Warm-up**: On first launch, the application initializes Chrome in the background
+
+**Error Handling**: Failures are shown in red status text with "Failed." message
+
+### Example Workflow
+
+```
+1. Launch app → Status: "Initializing Engine..." then "Ready."
+2. Enter: github.com
+3. Select: 4K UHD (3840x2160)
+4. Wait: 5 seconds
+5. Click: "RENDER SCREENSHOT"
+6. Watch: Progress bar fills over 5 seconds
+7. See: Thumbnail preview appears
+8. Click: "Open Full View" (opens in default viewer)
+9. Click: "Save to Disk"
+10. Choose: ~/Pictures/github-screenshot.png
+11. Done: Status shows "Saved."
+```
+
+## CLI Usage (v0.1 - Legacy)
 
 ### Basic Usage
 
 Start the interactive CLI:
 
 ```bash
-strangerprints
+python releases/strangerprints-v0.1.py
 ```
 
 ### Interactive Prompts
@@ -29,13 +105,9 @@ The CLI will prompt you for:
    - Default: 5 seconds
    - Increase for pages with heavy JavaScript or slow loading
 
-### Example Session
+### Example CLI Session (v0.1)
 
 ```
-==================================================
-StrangerPrints - Browser Screenshot Renderer v1.0
-==================================================
-
 URL (or 'exit'): github.com
 Filename: github
 Wait time (s): 5
@@ -45,8 +117,6 @@ Waiting 5 seconds...
 Saved to: github.png
 
 URL (or 'exit'): exit
-
-Thank you for using StrangerPrints!
 ```
 
 ## Programmatic Usage
@@ -133,10 +203,13 @@ All these formats work:
 
 ### Resolution
 
-Current version captures at Full HD (1920x1080). Future versions will support:
-- HD (1280x720)
-- 2K (2560x1440)
-- 4K (3840x2160)
+**v2.0 GUI** supports multiple resolutions:
+- Full HD (1920x1080) - Standard desktop
+- 4K UHD (3840x2160) - Ultra high definition  
+- Mobile (375x812) - iPhone X/11/12 viewport
+- Instagram (1080x1080) - Social media square
+
+**v0.1 CLI** captures at Full HD (1920x1080) only
 
 ## Advanced Usage
 

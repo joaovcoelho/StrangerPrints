@@ -27,6 +27,10 @@ StrangerPrints/
 │   ├── README.md              # Examples documentation
 │   └── basic_usage.py         # Basic usage example
 │
+├── releases/                  # Versioned releases
+│   ├── strangerprints-v0.1.py # Original CLI version
+│   └── strangerprints-v2.0.py # GUI version with advanced features
+│
 ├── src/                       # Source code
 │   └── strangerprints/       # Main package
 │       ├── __init__.py       # Package initialization
@@ -46,9 +50,67 @@ StrangerPrints/
 ├── SECURITY.md           # Security policy
 ├── pyproject.toml        # Modern Python packaging config
 ├── requirements.txt      # Dependencies
-├── setup.py             # Package setup (legacy)
-└── version_1_0.py       # Original version (kept for reference)
+└── setup.py             # Package setup (legacy)
 ```
+
+## Version History & Architecture Evolution
+
+### v2.0 - GUI with Advanced Features (Current)
+
+**File**: `releases/strangerprints-v2.0.py`
+
+A complete architectural redesign introducing professional-grade features:
+
+**Core Components:**
+
+1. **ScreenshotEngine (Backend)**
+   - Singleton pattern implementation
+   - Thread-safe browser operations with locking mechanisms
+   - Resource watchdog for automatic memory cleanup
+   - Smart driver initialization and reuse
+   - Explicit garbage collection
+
+2. **StrangerPrintsApp (Frontend)**
+   - Modern Tkinter GUI with dark theme
+   - Event-driven architecture
+   - Non-blocking operations via threading
+   - Real-time status updates and progress tracking
+
+**Key Architectural Patterns:**
+
+- **Singleton Pattern**: Ensures single browser instance across application
+- **Observer Pattern**: Status callbacks for real-time UI updates
+- **Thread Pool**: Background workers prevent UI blocking
+- **Resource Management**: Automatic cleanup with watchdog timer
+- **Separation of Concerns**: Backend engine completely independent of frontend
+
+**Threading Model:**
+```
+Main Thread (GUI)
+├── UI Event Loop (Tkinter)
+└── Status Updates (via callbacks)
+
+Background Threads
+├── Warmup Thread (daemon) - Initialize engine on startup
+├── Watchdog Thread (daemon) - Monitor and cleanup idle resources
+└── Capture Thread - Execute screenshot operations
+```
+
+**Memory Management Strategy:**
+- Lock-based synchronization prevents race conditions
+- Watchdog monitors activity and terminates idle browser (2min timeout)
+- Explicit `gc.collect()` after browser cleanup
+- Driver reuse between captures reduces overhead
+
+### v0.1 - Simple CLI (Legacy)
+
+**File**: `releases/strangerprints-v0.1.py`
+
+Simple command-line interface with basic functionality:
+- Sequential execution (blocking)
+- New browser instance per capture
+- Fixed resolution (Full HD)
+- Basic error handling
 
 ## Design Principles
 
@@ -56,9 +118,10 @@ StrangerPrints/
 
 The codebase is organized into distinct modules:
 
-- **`renderer.py`**: Core screenshot functionality
-- **`cli.py`**: Command-line interface
+- **`renderer.py`**: Core screenshot functionality (package)
+- **`cli.py`**: Command-line interface (package)
 - **`__init__.py`**: Package API
+- **`strangerprints-v2.0.py`**: Standalone GUI application (release)
 
 ### 2. Standard Structure
 
