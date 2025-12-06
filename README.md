@@ -1,65 +1,135 @@
 # StrangerPrints - Browser Screenshot Renderer
 
-StrangerPrints is an open-source software designed to allow users to generate screenshots (high resolution or not, up to 4K) from web applications. The best part? No installation is required to use it!
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python Version](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
 
-## Features
-- Generate high-resolution screenshots (up to 4K).
-- Simple and robust CLI interface.
-- Automatically fixes URLs.
-- No installation required.
+StrangerPrints is an open-source tool designed to allow users to generate high-resolution screenshots (up to 4K) from web applications. With an easy-to-use CLI and programmatic API, capturing web pages has never been simpler!
 
-## Version 1.0
-Below is the first version of the code, which provides a robust CLI for taking screenshots:
+## ✨ Features
+
+- 📸 **High-Resolution Screenshots**: Generate Full HD (1920x1080) screenshots with support for higher resolutions
+- 🎯 **Simple CLI Interface**: Interactive command-line interface for quick screenshot captures
+- 🔧 **Auto-Fix URLs**: Automatically adds `https://` to URLs without protocol
+- 🚀 **No Manual Setup**: Automatically manages ChromeDriver installation
+- 🐍 **Programmatic API**: Use StrangerPrints in your Python scripts
+- ⏱️ **Configurable Wait Time**: Set custom page load times for dynamic content
+- 🌐 **Cross-Platform**: Works on Windows, macOS, and Linux
+
+## 📦 Installation
+
+### From PyPI (coming soon)
+
+```bash
+pip install strangerprints
+```
+
+### From Source
+
+1. Clone the repository:
+```bash
+git clone https://github.com/joaovcoelho/StrangerPrints.git
+cd StrangerPrints
+```
+
+2. Install the package:
+```bash
+pip install -e .
+```
+
+Or install dependencies directly:
+```bash
+pip install -r requirements.txt
+```
+
+## 🚀 Quick Start
+
+### CLI Usage
+
+Run the interactive CLI:
+
+```bash
+strangerprints
+```
+
+Then follow the prompts:
+1. Enter the URL of the website (e.g., `google.com` or `https://example.com`)
+2. Specify the output filename (e.g., `screenshot.png`)
+3. Set the wait time in seconds (default: 5)
+
+### Programmatic Usage
+
+Use StrangerPrints in your Python code:
 
 ```python
-import time
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
+from strangerprints import take_fullhd_screenshot
 
-def take_fullhd_screenshot(url, save_path, wait_time=5):
-    # Auto-fix URL
-    if not url.startswith(('http://', 'https://')):
-        url = 'https://' + url
+# Take a screenshot with default settings
+take_fullhd_screenshot("https://github.com", "github.png")
 
-    # Setup
-    chrome_options = Options()
-    chrome_options.add_argument("--headless") 
-    chrome_options.add_argument("--window-size=1920,1080")
-    
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+# Take a screenshot with custom wait time
+take_fullhd_screenshot("https://example.com", "example.png", wait_time=10)
 
-    try:
-        print(f"\nNavigating to {url}...")
-        driver.get(url)
-        print(f"Waiting {wait_time} seconds...")
-        time.sleep(wait_time) 
-        driver.save_screenshot(save_path)
-        print(f"Saved to: {save_path}")
-    except Exception as e:
-        print(f"Error: {e}")
-    finally:
-        driver.quit()
+# URL without protocol (auto-fixed to https://)
+take_fullhd_screenshot("google.com", "google.png")
+```
 
-def user_input():
-    target_url = input("\nURL (or 'exit'): ").strip()
-    if target_url.lower() in ['sair', 'exit', 'quit']: return False
+## 📚 Documentation
 
-    output_file = input("Filename: ").strip()
-    if not output_file.endswith(".png"): output_file += ".png"
+For more examples, see the [examples](examples/) directory.
 
-    try:
-        wait = int(input("Wait time (s): "))
-    except ValueError:
-        wait = 5
+### API Reference
 
-    take_fullhd_screenshot(target_url, output_file, wait_time=wait)
-    return True
+#### `take_fullhd_screenshot(url, save_path, wait_time=5)`
 
-if __name__ == "__main__":
-    running = True
-    while running:
-        running = user_input()
+Captures a Full HD screenshot of a web page.
 
+**Parameters:**
+- `url` (str): The URL of the web page to capture
+- `save_path` (str): The file path where the screenshot will be saved
+- `wait_time` (int, optional): Time in seconds to wait for page load (default: 5)
+
+**Example:**
+```python
+take_fullhd_screenshot("https://python.org", "python_homepage.png", wait_time=8)
+```
+
+## 🛠️ Requirements
+
+- Python 3.7+
+- Chrome browser installed
+- Internet connection (for initial ChromeDriver download)
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🔄 Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a list of changes in each version.
+
+## 🐛 Bug Reports & Feature Requests
+
+Please use the [GitHub Issues](https://github.com/joaovcoelho/StrangerPrints/issues) page to report bugs or request features.
+
+## 📧 Contact
+
+For questions or support, please open an issue on GitHub.
+
+## 🌟 Acknowledgments
+
+- Built with [Selenium](https://www.selenium.dev/)
+- ChromeDriver management by [webdriver-manager](https://github.com/SergeyPirogov/webdriver_manager)
+
+---
+
+Made with ❤️ by the StrangerPrints community
