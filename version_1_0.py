@@ -1,17 +1,3 @@
-# StrangerPrints - Browser Screenshot Renderer
-
-StrangerPrints is an open-source software designed to allow users to generate screenshots (high resolution or not, up to 4K) from web applications. The best part? No installation is required to use it!
-
-## Features
-- Generate high-resolution screenshots (up to 4K).
-- Simple and robust CLI interface.
-- Automatically fixes URLs.
-- No installation required.
-
-## Version 1.0
-Below is the first version of the code, which provides a robust CLI for taking screenshots:
-
-```python
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -62,4 +48,3 @@ if __name__ == "__main__":
     running = True
     while running:
         running = user_input()
-
