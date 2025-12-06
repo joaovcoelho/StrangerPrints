@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added - Massive Update
 - **Graphical User Interface (GUI)**: Modern, dark-themed interface built with Tkinter
-- **Singleton Pattern Implementation**: ScreenshotEngine with resource-efficient design
+- **Resource-Efficient Engine**: Single instance design with browser reuse for optimal performance
 - **Multiple Resolution Support**: Full HD (1920x1080), 4K UHD (3840x2160), Mobile (375x812), Instagram (1080x1080)
 - **Live Preview**: In-app thumbnail preview before saving
 - **Full Preview Mode**: Open captured screenshot in default image viewer

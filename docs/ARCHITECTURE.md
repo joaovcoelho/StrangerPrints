@@ -64,7 +64,7 @@ A complete architectural redesign introducing professional-grade features:
 **Core Components:**
 
 1. **ScreenshotEngine (Backend)**
-   - Singleton pattern implementation
+   - Single instance design with resource reuse
    - Thread-safe browser operations with locking mechanisms
    - Resource watchdog for automatic memory cleanup
    - Smart driver initialization and reuse
@@ -78,7 +78,7 @@ A complete architectural redesign introducing professional-grade features:
 
 **Key Architectural Patterns:**
 
-- **Singleton Pattern**: Ensures single browser instance across application
+- **Single Instance Design**: One engine instance reuses browser across captures
 - **Observer Pattern**: Status callbacks for real-time UI updates
 - **Thread Pool**: Background workers prevent UI blocking
 - **Resource Management**: Automatic cleanup with watchdog timer

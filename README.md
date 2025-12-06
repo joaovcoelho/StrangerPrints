@@ -11,7 +11,7 @@ StrangerPrints is a powerful open-source tool designed to generate high-resoluti
 ### 🎨 New in v2.0 - Massive Update!
 
 - 🖥️ **Modern GUI Interface**: Beautiful dark-themed graphical interface with intuitive controls
-- 🏗️ **Singleton Architecture**: Resource-efficient engine design for optimal performance
+- 🏗️ **Resource-Efficient Architecture**: Single instance engine design that reuses browser for optimal performance
 - 📐 **Multiple Resolution Support**: 
   - Full HD (1920x1080)
   - 4K UHD (3840x2160)
@@ -126,7 +126,7 @@ Version 2.0 represents a complete reimagining of StrangerPrints with enterprise-
 
 ### Architecture Improvements
 
-**Singleton Pattern**: The `ScreenshotEngine` class implements a singleton pattern with thread-safe operations, ensuring only one browser instance is active at a time. This prevents memory bloat and resource conflicts.
+**Single Instance Design**: The application creates one `ScreenshotEngine` instance that reuses the browser driver across multiple captures. Thread-safe operations ensure only one browser instance is active at a time, preventing memory bloat and resource conflicts.
 
 **Threading & Concurrency**: Background threads handle browser operations, preventing the GUI from freezing during captures. Thread locks ensure safe concurrent access to shared resources.
 

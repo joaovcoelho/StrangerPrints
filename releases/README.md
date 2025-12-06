@@ -10,7 +10,7 @@ This directory contains all versioned releases of StrangerPrints. Each version i
 
 **Major Features:**
 - 🖥️ Modern graphical user interface (GUI)
-- 🏗️ Singleton pattern for resource efficiency
+- 🏗️ Single instance architecture for resource efficiency
 - 📐 Multiple resolution support (Full HD, 4K, Mobile, Instagram)
 - 👁️ Live preview and full view capabilities
 - 💾 Custom save location dialog
@@ -78,7 +78,7 @@ pip install selenium webdriver-manager
 | Save Dialog | ❌ | ✅ |
 | Memory Management | Basic | Advanced with auto-cleanup |
 | Threading | ❌ | ✅ (Non-blocking) |
-| Resource Efficiency | Low | High (Singleton + Watchdog) |
+| Resource Efficiency | Low | High (Instance reuse + Watchdog) |
 | Progress Tracking | Text only | Visual progress bar |
 | Best For | Scripts, automation | Interactive use, design work |
 
