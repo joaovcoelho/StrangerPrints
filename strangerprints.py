@@ -17,6 +17,9 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 
+# StrangerPrints Release Version
+__version__ = "0.1.0"
+
 # --- BACKEND ENGINE WITH RESOURCE WATCHDOG ---
 class ScreenshotEngine:
     def __init__(self):
