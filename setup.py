@@ -13,6 +13,7 @@ long_description = (this_directory / "README.md").read_text(encoding="utf-8")
 requirements = [
     "selenium>=4.0.0",
     "webdriver-manager>=3.8.0",
+    "Pillow>=10.0.0",
 ]
 
 setup(
@@ -36,13 +37,11 @@ setup(
         "Topic :: Multimedia :: Graphics :: Capture :: Screen Capture",
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
-        "Programming Language :: Python :: 3.10",
-        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
     ],
-    python_requires=">=3.7",
+    python_requires=">=3.12",
     install_requires=requirements,
     entry_points={
         "console_scripts": [

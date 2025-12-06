@@ -150,7 +150,7 @@ Runs on: Push to main/develop, Pull Requests
 **Jobs:**
 1. **Test Matrix**:
    - OS: Ubuntu, Windows, macOS
-   - Python: 3.7, 3.8, 3.9, 3.10, 3.11
+   - Python: 3.12, 3.13, 3.14
    - Installs package and verifies imports
 
 2. **Lint**:
@@ -203,6 +203,13 @@ Legacy setuptools configuration (for compatibility):
 - Classifiers
 - Entry points
 
+### `requirements.txt`
+
+Plain text file listing runtime dependencies:
+- Used for development and direct installation (`pip install -r requirements.txt`)
+- Easy to read and version control
+- Compatible with tools like pip-compile and Dependabot
+
 ### `MANIFEST.in`
 
 Specifies additional files to include in distributions:
@@ -210,6 +217,24 @@ Specifies additional files to include in distributions:
 - License
 - Examples
 - Changelog
+
+### Why Both `setup.py` and `requirements.txt`?
+
+The project maintains both for different use cases:
+
+1. **`setup.py` / `pyproject.toml`**: 
+   - Defines package metadata and dependencies for distribution
+   - Used when installing the package (`pip install strangerprints`)
+   - Required for uploading to PyPI
+   - Dependencies are embedded in the package metadata
+
+2. **`requirements.txt`**:
+   - Provides a simple, standalone list of dependencies
+   - Useful for development and testing environments
+   - Compatible with tools that don't parse package metadata
+   - Often used in CI/CD pipelines and containerization
+
+**Best Practice**: Both files should be kept in sync. When adding a new dependency, update both `requirements.txt` and the `dependencies` list in `setup.py` / `pyproject.toml`.
 
 ## Extension Points
 

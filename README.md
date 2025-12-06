@@ -1,7 +1,7 @@
 # StrangerPrints - Browser Screenshot Renderer
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python Version](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
+[![Python Version](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
 
 StrangerPrints is an open-source tool designed to allow users to generate high-resolution screenshots (up to 4K) from web applications. With an easy-to-use CLI and programmatic API, capturing web pages has never been simpler!
 
@@ -95,7 +95,7 @@ take_fullhd_screenshot("https://python.org", "python_homepage.png", wait_time=8)
 
 ## 🛠️ Requirements
 
-- Python 3.7+
+- Python 3.12+ (supports Python 3.12, 3.13, and 3.14)
 - Chrome browser installed
 - Internet connection (for initial ChromeDriver download)
 

@@ -6,7 +6,7 @@ This guide will help you install StrangerPrints on your system.
 
 Before installing StrangerPrints, ensure you have:
 
-- Python 3.7 or higher installed
+- Python 3.12 or higher installed (supports Python 3.12, 3.13, and 3.14)
 - Chrome browser installed on your system
 - Internet connection (for initial ChromeDriver download)
 
