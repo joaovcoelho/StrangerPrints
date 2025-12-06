@@ -19,7 +19,7 @@ The CLI will prompt you for:
 1. **URL**: Enter the website URL
    - Can include protocol: `https://example.com`
    - Or without protocol: `example.com` (automatically adds `https://`)
-   - Type `exit`, `quit`, or `sair` to quit
+   - Type `exit`, `quit`, or `sair` (Portuguese for "exit") to quit
 
 2. **Filename**: Output screenshot filename
    - Can include `.png` extension or not

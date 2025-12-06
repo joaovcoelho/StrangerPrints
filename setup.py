@@ -9,8 +9,11 @@ from pathlib import Path
 this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text(encoding="utf-8")
 
-# Read requirements
-requirements = (this_directory / "requirements.txt").read_text().splitlines()
+# Define requirements directly to ensure they're always available
+requirements = [
+    "selenium>=4.0.0",
+    "webdriver-manager>=3.8.0",
+]
 
 setup(
     name="strangerprints",
